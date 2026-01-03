@@ -20,6 +20,11 @@ import {
 
 export default function Navbar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+  // Mobile dropdown states
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const [isMobileCompanyOpen, setIsMobileCompanyOpen] = useState(false);
+
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
 
@@ -95,8 +100,11 @@ export default function Navbar() {
     },
   ];
 
+  // Close mobile menu when route changes
   useEffect(() => {
     setIsMobileOpen(false);
+    setIsMobileServicesOpen(false);
+    setIsMobileCompanyOpen(false);
   }, [pathname]);
 
   return (
@@ -118,7 +126,7 @@ export default function Navbar() {
             Home
           </Link>
 
-          {/* Services Dropdown */}
+          {/* Services Dropdown (Desktop) */}
           <div
             className="relative group h-full flex items-center"
             onMouseEnter={() => setActiveDropdown("services")}
@@ -168,7 +176,7 @@ export default function Navbar() {
             Events
           </Link>
 
-          {/* Company Dropdown */}
+          {/* Company Dropdown (Desktop) */}
           <div
             className="relative group h-full flex items-center"
             onMouseEnter={() => setActiveDropdown("company")}
@@ -216,7 +224,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* CTA */}
+        {/* CTA & Mobile Toggle */}
         <div className="flex items-center gap-4">
           <Link
             href="/contact"
@@ -232,6 +240,103 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+
+      {/* --- Mobile Menu (Added Logic) --- */}
+      {isMobileOpen && (
+        <div className="md:hidden absolute top-20 left-0 w-full h-[calc(100vh-80px)] border-t border-white/10 bg-[#020617] px-4 py-6 shadow-2xl overflow-y-auto">
+          <div className="space-y-4 pb-20">
+            <Link
+              href="/"
+              className="block text-lg font-medium text-slate-300 hover:text-white"
+            >
+              Home
+            </Link>
+
+            {/* Mobile Services Dropdown */}
+            <div>
+              <button
+                onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                className="flex items-center justify-between w-full text-lg font-medium text-slate-300 hover:text-white"
+              >
+                Services
+                <ChevronDown
+                  className={`h-5 w-5 transition-transform ${
+                    isMobileServicesOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              {isMobileServicesOpen && (
+                <div className="mt-2 space-y-2 pl-4 border-l-2 border-white/10 ml-1">
+                  {services.map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className="block py-2 text-sm text-slate-400 hover:text-cyan-400"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <Link
+              href="/hopn-labs"
+              className="block text-lg font-medium text-slate-300 hover:text-white"
+            >
+              HOPn Labs
+            </Link>
+            <Link
+              href="/events"
+              className="block text-lg font-medium text-slate-300 hover:text-white"
+            >
+              Events
+            </Link>
+
+            {/* Mobile Company Dropdown */}
+            <div>
+              <button
+                onClick={() => setIsMobileCompanyOpen(!isMobileCompanyOpen)}
+                className="flex items-center justify-between w-full text-lg font-medium text-slate-300 hover:text-white"
+              >
+                Company
+                <ChevronDown
+                  className={`h-5 w-5 transition-transform ${
+                    isMobileCompanyOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              {isMobileCompanyOpen && (
+                <div className="mt-2 space-y-2 pl-4 border-l-2 border-white/10 ml-1">
+                  {company.map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className="block py-2 text-sm text-slate-400 hover:text-cyan-400"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <Link
+              href="/insights"
+              className="block text-lg font-medium text-slate-300 hover:text-white"
+            >
+              Insights
+            </Link>
+
+            <Link
+              href="/contact"
+              className="block w-full text-center rounded-xl bg-cyan-600 py-4 text-white font-bold shadow-lg mt-8"
+            >
+              Contact Us
+            </Link>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
