@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import {
   Users,
@@ -12,8 +12,22 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Navbar from "@/app/components/Navbar";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function TeamPage() {
+  useEffect(() => {
+    const initAOS = async () => {
+      await import("aos");
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        anchorPlacement: "top-bottom",
+      });
+    };
+    initAOS();
+  }, []);
   return (
     <main className="min-h-screen bg-[#020617] text-slate-50 selection:bg-cyan-500 selection:text-white">
       <Navbar />
@@ -24,15 +38,30 @@ export default function TeamPage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-900/20 rounded-full blur-[120px] -z-10" />
 
         <div className="max-w-4xl mx-auto flex flex-col items-center">
-          <div className="mb-8 p-4">
+          <div
+            data-aos="zoom-in-up"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="150"
+            className="mb-8 p-4"
+          >
             <Users className="h-16 w-16 text-cyan-400" />
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
+          <h1
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="0"
+            className="text-5xl md:text-6xl font-bold tracking-tight mb-6"
+          >
             Meet Our <span className="text-cyan-400">Hard Working Team</span>
           </h1>
 
-          <p className="text-xl text-slate-400 leading-relaxed max-w-3xl">
+          <p
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="0"
+            className="text-xl text-slate-400 leading-relaxed max-w-3xl"
+          >
             The passionate minds and experienced professionals driving
             innovation and delivering excellence at HOPn. We are a collective of
             thinkers, creators, and problem-solvers dedicated to shaping the
@@ -45,7 +74,12 @@ export default function TeamPage() {
       <section className="px-6 pb-24">
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 justify-center">
           {/* Member 1: Prof. Dr. Ebada */}
-          <div className="bg-[#0f172a] border border-white/10 rounded-2xl p-8 text-center group hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1">
+          <div
+            data-aos="fade-right"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="0"
+            className="bg-[#0f172a] border border-white/10 rounded-2xl p-8 text-center group hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1"
+          >
             <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-cyan-500/20 group-hover:border-cyan-500 transition-colors">
               {/* Placeholder for actual image based on screenshot */}
               <div className="absolute inset-0 bg-slate-800 flex items-center justify-center">
@@ -82,7 +116,12 @@ export default function TeamPage() {
           </div>
 
           {/* Member 2: Dr. Nour Howeidi */}
-          <div className="bg-[#0f172a] border border-white/10 rounded-2xl p-8 text-center group hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1">
+          <div
+            data-aos="fade-right"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="200"
+            className="bg-[#0f172a] border border-white/10 rounded-2xl p-8 text-center group hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1"
+          >
             <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-cyan-500/20 group-hover:border-cyan-500 transition-colors">
               <div className="absolute inset-0 bg-slate-800 flex items-center justify-center">
                 <TrendingUp className="h-16 w-16 text-slate-600" />
@@ -119,7 +158,12 @@ export default function TeamPage() {
       </section>
 
       {/* Career CTA Section */}
-      <section className="px-6 pb-24">
+      <section
+        data-aos="zoom-in-up"
+        data-aos-anchor-placement="top-center"
+        data-aos-delay="150"
+        className="px-6 pb-24"
+      >
         <div className="max-w-4xl mx-auto bg-[#0f172a] border border-white/10 rounded-3xl p-12 text-center shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
             <Briefcase className="h-64 w-64 text-cyan-500" />

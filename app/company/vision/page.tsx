@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import {
   Info,
@@ -15,8 +15,22 @@ import {
   Network,
 } from "lucide-react";
 import Navbar from "@/app/components/Navbar";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function VisionPage() {
+  useEffect(() => {
+    const initAOS = async () => {
+      await import("aos");
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        anchorPlacement: "top-bottom",
+      });
+    };
+    initAOS();
+  }, []);
   return (
     <main className="min-h-screen bg-[#020617] text-slate-50 selection:bg-cyan-500 selection:text-white">
       <Navbar />
@@ -26,7 +40,12 @@ export default function VisionPage() {
         {/* Background Glow */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-900/20 rounded-full blur-[120px] -z-10" />
 
-        <div className="max-w-4xl mx-auto flex flex-col items-center">
+        <div
+          data-aos="fade-up"
+          data-aos-anchor-placement="top-center"
+          data-aos-delay="100"
+          className="max-w-4xl mx-auto flex flex-col items-center"
+        >
           <div className="mb-8 p-4">
             <Info className="h-16 w-16 text-cyan-400" />
           </div>
@@ -59,6 +78,9 @@ export default function VisionPage() {
               { text: "Higher Order Prototyping Network", icon: Share2 },
             ].map((item, i) => (
               <div
+                data-aos="zoom-in"
+                data-aos-anchor-placement="top-center"
+                data-aos-delay={i * 100}
                 key={i}
                 className="flex items-center gap-4 bg-[#1e293b]/50 border border-white/5 p-4 rounded-xl hover:border-cyan-500/30 transition-colors"
               >
@@ -76,7 +98,12 @@ export default function VisionPage() {
       <section className="px-6 pb-24">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
           {/* Vision Card */}
-          <div className="bg-[#0f172a] border border-white/10 p-10 rounded-2xl hover:border-cyan-500/50 transition-all duration-300">
+          <div
+            data-aos="fade-right"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="0"
+            className="bg-[#0f172a] border border-white/10 p-10 rounded-2xl hover:border-cyan-500/50 transition-all duration-300"
+          >
             <div className="flex items-center gap-3 mb-6">
               <Eye className="h-8 w-8 text-cyan-400" />
               <h3 className="text-2xl font-bold text-cyan-400">Our Vision</h3>
@@ -89,7 +116,12 @@ export default function VisionPage() {
           </div>
 
           {/* Mission Card */}
-          <div className="bg-[#0f172a] border border-white/10 p-10 rounded-2xl hover:border-cyan-500/50 transition-all duration-300">
+          <div
+            data-aos="fade-right"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="200"
+            className="bg-[#0f172a] border border-white/10 p-10 rounded-2xl hover:border-cyan-500/50 transition-all duration-300"
+          >
             <div className="flex items-center gap-3 mb-6">
               <Rocket className="h-8 w-8 text-cyan-400" />
               <h3 className="text-2xl font-bold text-cyan-400">Our Mission</h3>
@@ -137,6 +169,9 @@ export default function VisionPage() {
               },
             ].map((value, i) => (
               <div
+                data-aos="fade-left"
+                data-aos-anchor-placement="top-center"
+                data-aos-delay={i * 100}
                 key={i}
                 className="bg-[#0f172a] border border-white/10 p-8 rounded-2xl hover:border-cyan-500/50 transition-all text-center group"
               >
@@ -156,7 +191,12 @@ export default function VisionPage() {
       </section>
 
       {/* Team Work Visual Section */}
-      <section className="px-6 pb-24">
+      <section
+        data-aos="zoom-in-up"
+        data-aos-anchor-placement="top-center"
+        data-aos-delay="150"
+        className="px-6 pb-24"
+      >
         <div className="max-w-3xl mx-auto text-center">
           {/* Poster Image Container */}
           <div className="relative aspect-[3/4] md:aspect-square w-full max-w-md mx-auto rounded-xl overflow-hidden mb-8 border-4 border-white/5 shadow-2xl">

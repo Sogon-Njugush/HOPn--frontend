@@ -1,9 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Calendar, Clock, MapPin, Video, ArrowRight } from "lucide-react";
 import Navbar from "../components/Navbar";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const events = [
   {
@@ -39,6 +41,18 @@ const events = [
 ];
 
 export default function EventsPage() {
+  useEffect(() => {
+    const initAOS = async () => {
+      await import("aos");
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        anchorPlacement: "top-bottom",
+      });
+    };
+    initAOS();
+  }, []);
   return (
     <main className="min-h-screen bg-[#020617] text-slate-50 selection:bg-cyan-500 selection:text-white">
       <Navbar />
@@ -58,6 +72,9 @@ export default function EventsPage() {
       <section className="pb-24 px-6 max-w-7xl mx-auto space-y-6">
         {events.map((event, i) => (
           <div
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay={i * 100}
             key={i}
             className="flex flex-col md:flex-row gap-6 p-6 rounded-2xl bg-[#0f172a] border border-white/10 hover:border-cyan-500/50 transition-all group hover:shadow-[0_0_20px_rgba(6,182,212,0.1)]"
           >
@@ -104,7 +121,12 @@ export default function EventsPage() {
       </section>
 
       {/* Hosting/Sponsoring CTA Section */}
-      <section className="px-6 pb-24">
+      <section
+        className="px-6 pb-24"
+        data-aos="zoom-in-up"
+        data-aos-anchor-placement="top-center"
+        data-aos-delay="150"
+      >
         <div className="max-w-4xl mx-auto bg-[#0f172a] border border-white/10 rounded-3xl p-12 md:p-16 text-center shadow-2xl">
           <h2 className="text-3xl font-bold text-white mb-6">
             Interested in Hosting or Sponsoring an Event?

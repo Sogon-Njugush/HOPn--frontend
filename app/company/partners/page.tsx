@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import {
   HeartHandshake,
@@ -12,8 +12,22 @@ import {
   Handshake,
 } from "lucide-react";
 import Navbar from "@/app/components/Navbar";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function PartnersPage() {
+  useEffect(() => {
+    const initAOS = async () => {
+      await import("aos");
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        anchorPlacement: "top-bottom",
+      });
+    };
+    initAOS();
+  }, []);
   return (
     <main className="min-h-screen bg-[#020617] text-slate-50 selection:bg-cyan-500 selection:text-white">
       <Navbar />
@@ -24,15 +38,30 @@ export default function PartnersPage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-900/20 rounded-full blur-[120px] -z-10" />
 
         <div className="max-w-4xl mx-auto flex flex-col items-center">
-          <div className="mb-8 p-4">
+          <div
+            data-aos="zoom-in-up"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="150"
+            className="mb-8 p-4"
+          >
             <HeartHandshake className="h-16 w-16 text-cyan-400" />
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
+          <h1
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="100"
+            className="text-5xl md:text-6xl font-bold tracking-tight mb-6"
+          >
             <span className="text-cyan-400">Our Valued Partners</span>
           </h1>
 
-          <p className="text-xl text-slate-400 leading-relaxed max-w-3xl">
+          <p
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="200"
+            className="text-xl text-slate-400 leading-relaxed max-w-3xl"
+          >
             At HOPn, we believe in the power of synergy. We collaborate with
             leading organizations worldwide to drive innovation, create
             exceptional value, and achieve shared success for a better future.
@@ -44,7 +73,12 @@ export default function PartnersPage() {
       <section className="px-6 pb-24">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
           {/* Partner 1: Innovatech Corp */}
-          <div className="bg-[#0f172a] border border-white/10 rounded-2xl p-10 text-center hover:border-cyan-500/50 transition-all duration-300 group">
+          <div
+            data-aos="fade-right"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="0"
+            className="bg-[#0f172a] border border-white/10 rounded-2xl p-10 text-center hover:border-cyan-500/50 transition-all duration-300 group"
+          >
             <div className="flex flex-col items-center">
               <div className="h-14 w-14 rounded-full bg-cyan-900/20 flex items-center justify-center text-cyan-400 mb-6">
                 <Zap className="h-7 w-7" />
@@ -74,7 +108,12 @@ export default function PartnersPage() {
           </div>
 
           {/* Partner 2: Future Finance Group */}
-          <div className="bg-[#0f172a] border border-white/10 rounded-2xl p-10 text-center hover:border-cyan-500/50 transition-all duration-300 group">
+          <div
+            data-aos="fade-right"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="100"
+            className="bg-[#0f172a] border border-white/10 rounded-2xl p-10 text-center hover:border-cyan-500/50 transition-all duration-300 group"
+          >
             <div className="flex flex-col items-center">
               <div className="h-14 w-14 rounded-full bg-cyan-900/20 flex items-center justify-center text-cyan-400 mb-6">
                 <Briefcase className="h-7 w-7" />
@@ -104,7 +143,12 @@ export default function PartnersPage() {
           </div>
 
           {/* Partner 3: Global University Network */}
-          <div className="bg-[#0f172a] border border-white/10 rounded-2xl p-10 text-center hover:border-cyan-500/50 transition-all duration-300 group">
+          <div
+            data-aos="fade-right"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="200"
+            className="bg-[#0f172a] border border-white/10 rounded-2xl p-10 text-center hover:border-cyan-500/50 transition-all duration-300 group"
+          >
             <div className="flex flex-col items-center">
               <div className="h-14 w-14 rounded-full bg-cyan-900/20 flex items-center justify-center text-cyan-400 mb-6">
                 <Landmark className="h-7 w-7" />
@@ -134,7 +178,12 @@ export default function PartnersPage() {
           </div>
 
           {/* Partner 4: EcoSolutions International */}
-          <div className="bg-[#0f172a] border border-white/10 rounded-2xl p-10 text-center hover:border-cyan-500/50 transition-all duration-300 group">
+          <div
+            data-aos="fade-right"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="300"
+            className="bg-[#0f172a] border border-white/10 rounded-2xl p-10 text-center hover:border-cyan-500/50 transition-all duration-300 group"
+          >
             <div className="flex flex-col items-center">
               <div className="h-14 w-14 rounded-full bg-cyan-900/20 flex items-center justify-center text-cyan-400 mb-6">
                 <Leaf className="h-7 w-7" />
@@ -166,7 +215,12 @@ export default function PartnersPage() {
       </section>
 
       {/* Become a Partner CTA */}
-      <section className="px-6 pb-24">
+      <section
+        data-aos="zoom-in-up"
+        data-aos-anchor-placement="top-center"
+        data-aos-delay="150"
+        className="px-6 pb-24"
+      >
         <div className="max-w-4xl mx-auto bg-[#0f172a] border border-white/10 rounded-3xl p-12 text-center shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
             <Handshake className="h-64 w-64 text-cyan-500" />

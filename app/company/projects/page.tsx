@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import {
   Briefcase,
@@ -13,8 +13,22 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Navbar from "@/app/components/Navbar";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function ProjectsPage() {
+  useEffect(() => {
+    const initAOS = async () => {
+      await import("aos");
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        anchorPlacement: "top-bottom",
+      });
+    };
+    initAOS();
+  }, []);
   return (
     <main className="min-h-screen bg-[#020617] text-slate-50 selection:bg-cyan-500 selection:text-white">
       <Navbar />
@@ -25,19 +39,39 @@ export default function ProjectsPage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-900/20 rounded-full blur-[120px] -z-10" />
 
         <div className="max-w-4xl mx-auto flex flex-col items-center">
-          <div className="mb-8 p-4">
+          <div
+            data-aos="zoom-in-up"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="150"
+            className="mb-8 p-4"
+          >
             <Briefcase className="h-16 w-16 text-cyan-400" />
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-4">
+          <h1
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="0"
+            className="text-5xl md:text-6xl font-bold tracking-tight mb-4"
+          >
             <span className="text-cyan-400">Our Projects</span>
           </h1>
 
-          <h2 className="text-2xl text-white font-semibold mb-6">
+          <h2
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="200"
+            className="text-2xl text-white font-semibold mb-6"
+          >
             Showcasing Innovation in Action
           </h2>
 
-          <p className="text-xl text-slate-400 leading-relaxed max-w-2xl">
+          <p
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="300"
+            className="text-xl text-slate-400 leading-relaxed max-w-2xl"
+          >
             Discover some of the innovative projects and impactful solutions
             we&apos;ve delivered for our clients across various industries.
           </p>
@@ -48,7 +82,12 @@ export default function ProjectsPage() {
       <section className="px-6 pb-24">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Project 1: Goldenia */}
-          <div className="bg-[#0f172a] border border-white/10 rounded-2xl overflow-hidden group hover:border-cyan-500/50 transition-all duration-300 flex flex-col">
+          <div
+            data-aos="fade-right"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="0"
+            className="bg-[#0f172a] border border-white/10 rounded-2xl overflow-hidden group hover:border-cyan-500/50 transition-all duration-300 flex flex-col"
+          >
             <div className="h-48 bg-slate-900 relative overflow-hidden">
               <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:scale-105 transition-transform duration-700" />
               <div className="absolute top-4 right-4 h-12 w-12 rounded-full bg-cyan-500 flex items-center justify-center text-black z-10 shadow-lg">
@@ -83,7 +122,12 @@ export default function ProjectsPage() {
           </div>
 
           {/* Project 2: Find your Drug */}
-          <div className="bg-[#0f172a] border border-white/10 rounded-2xl overflow-hidden group hover:border-cyan-500/50 transition-all duration-300 flex flex-col">
+          <div
+            data-aos="fade-right"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="100"
+            className="bg-[#0f172a] border border-white/10 rounded-2xl overflow-hidden group hover:border-cyan-500/50 transition-all duration-300 flex flex-col"
+          >
             <div className="h-48 bg-slate-900 relative overflow-hidden">
               <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:scale-105 transition-transform duration-700" />
               <div className="absolute top-4 right-4 h-12 w-12 rounded-full bg-cyan-500 flex items-center justify-center text-black z-10 shadow-lg">
@@ -120,7 +164,12 @@ export default function ProjectsPage() {
           </div>
 
           {/* Project 3: KAHRAMAA Fleet */}
-          <div className="bg-[#0f172a] border border-white/10 rounded-2xl overflow-hidden group hover:border-cyan-500/50 transition-all duration-300 flex flex-col">
+          <div
+            data-aos="fade-right"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="200"
+            className="bg-[#0f172a] border border-white/10 rounded-2xl overflow-hidden group hover:border-cyan-500/50 transition-all duration-300 flex flex-col"
+          >
             <div className="h-48 bg-slate-900 relative overflow-hidden">
               <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:scale-105 transition-transform duration-700" />
               <div className="absolute top-4 right-4 h-12 w-12 rounded-full bg-cyan-500 flex items-center justify-center text-black z-10 shadow-lg">
@@ -157,7 +206,12 @@ export default function ProjectsPage() {
           </div>
 
           {/* Project 4: AI Market Analysis */}
-          <div className="bg-[#0f172a] border border-white/10 rounded-2xl overflow-hidden group hover:border-cyan-500/50 transition-all duration-300 flex flex-col">
+          <div
+            data-aos="fade-right"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="300"
+            className="bg-[#0f172a] border border-white/10 rounded-2xl overflow-hidden group hover:border-cyan-500/50 transition-all duration-300 flex flex-col"
+          >
             <div className="h-48 bg-slate-900 relative overflow-hidden">
               <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1642543492481-44e81e3914a7?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:scale-105 transition-transform duration-700" />
               <div className="absolute top-4 right-4 h-12 w-12 rounded-full bg-cyan-500 flex items-center justify-center text-black z-10 shadow-lg">
@@ -196,7 +250,12 @@ export default function ProjectsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="px-6 pb-24">
+      <section
+        data-aos="zoom-in-up"
+        data-aos-anchor-placement="top-center"
+        data-aos-delay="150"
+        className="px-6 pb-24"
+      >
         <div className="max-w-4xl mx-auto text-center border border-white/10 rounded-3xl p-12 md:p-16 bg-[#0f172a] shadow-2xl">
           <div className="inline-flex p-4 rounded-full bg-cyan-900/20 text-cyan-400 mb-6">
             <User className="h-8 w-8" />

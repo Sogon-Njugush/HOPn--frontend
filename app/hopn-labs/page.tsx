@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import {
   FlaskConical,
@@ -10,8 +10,22 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import Navbar from "../components/Navbar";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function LabsPage() {
+  useEffect(() => {
+    const initAOS = async () => {
+      await import("aos");
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        anchorPlacement: "top-bottom",
+      });
+    };
+    initAOS();
+  }, []);
   return (
     <main className="min-h-screen bg-[#020617] text-slate-50 selection:bg-cyan-500 selection:text-white">
       <Navbar />
@@ -21,19 +35,33 @@ export default function LabsPage() {
         <div className="absolute top-0 right-0 -mr-20 -mt-20 h-96 w-96 rounded-full bg-cyan-500/20 blur-[100px]" />
 
         <div className="relative max-w-7xl mx-auto text-center z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/50 text-cyan-400 text-sm font-medium mb-8 border border-cyan-500/20 backdrop-blur-md">
+          <div
+            data-aos="zoom-in-up"
+            data-aos-delay="400"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/50 text-cyan-400 text-sm font-medium mb-8 border border-cyan-500/20 backdrop-blur-md"
+          >
             <FlaskConical className="h-4 w-4" />
             <span>Innovation Lab</span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6">
+          <h1
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="100"
+            className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6"
+          >
             Building the <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">
               Impossible.
             </span>
           </h1>
 
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-10">
+          <p
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="200"
+            className="text-xl text-slate-400 max-w-2xl mx-auto mb-10"
+          >
             HOPn Labs is our dedicated R&D division. We prototype high-impact
             technologies before they hit the market, ensuring you stay a decade
             ahead.
@@ -64,6 +92,9 @@ export default function LabsPage() {
             },
           ].map((project, i) => (
             <div
+              data-aos="fade-right"
+              data-aos-anchor-placement="top-center"
+              data-aos-delay={i * 100}
               key={i}
               className="group relative bg-[#0f172a] border border-white/10 p-8 rounded-2xl hover:border-cyan-500/50 transition-all overflow-hidden hover:-translate-y-1 shadow-lg"
             >

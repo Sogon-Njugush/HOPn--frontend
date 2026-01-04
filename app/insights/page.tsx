@@ -1,8 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { BookOpen, Search, ArrowRight, Clock } from "lucide-react";
 import Navbar from "../components/Navbar";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const articles = [
   {
@@ -35,6 +37,18 @@ const articles = [
 ];
 
 export default function InsightsPage() {
+  useEffect(() => {
+    const initAOS = async () => {
+      await import("aos");
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        anchorPlacement: "top-bottom",
+      });
+    };
+    initAOS();
+  }, []);
   return (
     <main className="min-h-screen bg-[#020617] text-slate-50 selection:bg-cyan-500 selection:text-white">
       <Navbar />
@@ -42,7 +56,7 @@ export default function InsightsPage() {
       <section className="pt-32 pb-16 px-6 max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
           <div className="max-w-2xl">
-            <h1 className="text-5xl font-bold mb-6">
+            <h1 className="text-5xl font-bold mb-6 ">
               HOPn <span className="text-cyan-400">Insights.</span>
             </h1>
             <p className="text-xl text-slate-400">
@@ -64,6 +78,9 @@ export default function InsightsPage() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-24">
           {articles.map((post, i) => (
             <article
+              data-aos="fade-right"
+              data-aos-anchor-placement="top-center"
+              data-aos-delay={i * 100}
               key={i}
               className="group flex flex-col bg-[#0f172a] border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/50 transition-all h-full hover:-translate-y-1"
             >
