@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
         className={`${inter.className} bg-slate-50 text-slate-900 antialiased`}
       >
         {children}
+        <ScrollToTop />
         <Footer />
       </body>
     </html>
