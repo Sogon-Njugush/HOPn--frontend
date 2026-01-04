@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { use, useEffect } from "react";
 
 import Link from "next/link";
 import {
@@ -23,8 +23,22 @@ import {
   Award,
 } from "lucide-react";
 import Navbar from "./components/Navbar";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function HomePage() {
+  useEffect(() => {
+    const initAOS = async () => {
+      await import("aos");
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        anchorPlacement: "top-bottom",
+      });
+    };
+    initAOS();
+  }, []);
   return (
     <main className="min-h-screen bg-[#020617] text-slate-50 selection:bg-cyan-500 selection:text-white">
       <Navbar />
@@ -35,25 +49,39 @@ export default function HomePage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-cyan-900/20 rounded-full blur-[120px] -z-10 opacity-50" />
 
         <div className="max-w-5xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0f172a] border border-cyan-500/30 text-cyan-400 mb-8 backdrop-blur-md shadow-[0_0_15px_rgba(6,182,212,0.1)]">
+          <div
+            data-aos="zoom-in-up"
+            data-aos-delay="400"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0f172a] border border-cyan-500/30 text-cyan-400 mb-8 backdrop-blur-md shadow-[0_0_15px_rgba(6,182,212,0.1)]"
+          >
             <Zap className="h-3.5 w-3.5" />
             <span className="text-xs font-bold tracking-wide uppercase">
               Innovate. Transform. Lead.
             </span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-8 leading-[1.1]">
+          <h1
+            data-aos="fade-down"
+            className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-8 leading-[1.1]"
+          >
             Pioneering Tomorrow&apos;s Technology, <br />
             <span className="text-cyan-400">Today.</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed">
+          <p
+            data-aos="fade-up"
+            data-aos-delay="200"
+            className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed"
+          >
             HOPn is your dedicated partner in navigating the complexities of the
             digital age. We deliver transformative solutions in AI, FinTech,
             Digital Twins, and beyond, empowering your business to thrive.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-24">
+          <div
+            data-aos="fade-up"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-24"
+          >
             <Link
               href="/services"
               className="px-8 py-4 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-black font-bold text-lg transition-all hover:-translate-y-1 shadow-[0_0_20px_rgba(6,182,212,0.4)] flex items-center gap-2"
@@ -70,7 +98,11 @@ export default function HomePage() {
 
           {/* Hero Feature Cards */}
           <div className="grid md:grid-cols-3 gap-6 text-left">
-            <div className="bg-[#0f172a] border border-white/5 p-8 rounded-2xl hover:border-cyan-500/30 transition-all group">
+            <div
+              data-aos="fade-right"
+              data-aos-delay="100"
+              className="bg-[#0f172a] border border-white/5 p-8 rounded-2xl hover:border-cyan-500/30 transition-all group"
+            >
               <div className="mb-4 text-cyan-400 group-hover:scale-110 transition-transform origin-left">
                 <Cpu className="h-8 w-8" />
               </div>
@@ -82,7 +114,11 @@ export default function HomePage() {
                 efficiency.
               </p>
             </div>
-            <div className="bg-[#0f172a] border border-white/5 p-8 rounded-2xl hover:border-cyan-500/30 transition-all group">
+            <div
+              data-aos="fade-right"
+              data-aos-delay="400"
+              className="bg-[#0f172a] border border-white/5 p-8 rounded-2xl hover:border-cyan-500/30 transition-all group"
+            >
               <div className="mb-4 text-cyan-400 group-hover:scale-110 transition-transform origin-left">
                 <Lightbulb className="h-8 w-8" />
               </div>
@@ -94,7 +130,11 @@ export default function HomePage() {
                 challenges.
               </p>
             </div>
-            <div className="bg-[#0f172a] border border-white/5 p-8 rounded-2xl hover:border-cyan-500/30 transition-all group">
+            <div
+              data-aos="fade-right"
+              data-aos-delay="800"
+              className="bg-[#0f172a] border border-white/5 p-8 rounded-2xl hover:border-cyan-500/30 transition-all group"
+            >
               <div className="mb-4 text-cyan-400 group-hover:scale-110 transition-transform origin-left">
                 <Zap className="h-8 w-8" />
               </div>
@@ -112,7 +152,7 @@ export default function HomePage() {
       {/* --- SERVICES GRID (Part 2 & 3) --- */}
       <section className="py-24 px-6 bg-[#020617]">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div data-aos="fade-down" className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Our Core{" "}
               <span className="text-cyan-400">Services & Expertise</span>
@@ -164,6 +204,9 @@ export default function HomePage() {
               },
             ].map((service, i) => (
               <div
+                data-aos="fade-up"
+                data-aos-anchor-placement="top-center"
+                data-aos-delay={i * 100}
                 key={i}
                 className="bg-[#0f172a] border border-white/10 p-10 rounded-2xl group hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1 flex flex-col items-center text-center"
               >
@@ -191,7 +234,7 @@ export default function HomePage() {
       {/* --- GUIDING PRINCIPLES (Part 5) --- */}
       <section className="py-24 px-6 bg-[#0f172a]/30 border-y border-white/5">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
+          <div data-aos="fade-down" className="text-center mb-16">
             <div className="inline-block p-3 rounded-full bg-cyan-900/10 text-cyan-400 mb-4">
               <Cpu className="h-8 w-8" />
             </div>
@@ -205,7 +248,12 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-[#0f172a] border border-white/10 p-10 rounded-2xl hover:border-cyan-500/30 transition-all">
+            <div
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-center"
+              data-aos-delay="0"
+              className="bg-[#0f172a] border border-white/10 p-10 rounded-2xl hover:border-cyan-500/30 transition-all"
+            >
               <div className="flex items-center gap-3 mb-6">
                 <Eye className="h-8 w-8 text-cyan-400" />
                 <h3 className="text-2xl font-bold text-cyan-400">Our Vision</h3>
@@ -216,7 +264,12 @@ export default function HomePage() {
                 services in AI, FinTech, automation, and digital transformation.
               </p>
             </div>
-            <div className="bg-[#0f172a] border border-white/10 p-10 rounded-2xl hover:border-cyan-500/30 transition-all">
+            <div
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-center"
+              data-aos-delay="200"
+              className="bg-[#0f172a] border border-white/10 p-10 rounded-2xl hover:border-cyan-500/30 transition-all"
+            >
               <div className="flex items-center gap-3 mb-6">
                 <Rocket className="h-8 w-8 text-cyan-400" />
                 <h3 className="text-2xl font-bold text-cyan-400">
@@ -238,10 +291,14 @@ export default function HomePage() {
       {/* --- CORE VALUES --- */}
       <section className="py-24 px-6">
         <div className="max-w-7xl mx-auto text-center">
-          <div className="inline-block mb-6 text-cyan-400">
+          <div data-aos="zoom-in" className="inline-block mb-6 text-cyan-400">
             <Target className="h-10 w-10 mx-auto" />
           </div>
-          <h2 className="text-4xl font-bold text-white mb-16">
+          <h2
+            data-aos="fade-down"
+            data-aos-anchor-placement="top-center"
+            className="text-4xl font-bold text-white mb-16"
+          >
             Our Core Values
           </h2>
 
@@ -269,6 +326,9 @@ export default function HomePage() {
               },
             ].map((value, i) => (
               <div
+                data-aos="fade-right"
+                data-aos-anchor-placement="top-center"
+                data-aos-delay={i * 200}
                 key={i}
                 className="bg-[#0f172a] border border-white/10 p-8 rounded-2xl hover:border-cyan-500/50 transition-all group"
               >
@@ -290,13 +350,27 @@ export default function HomePage() {
       {/* --- PARTNERS (Part 4) --- */}
       <section className="py-24 px-6 bg-[#0f172a]/30 border-y border-white/5 text-center">
         <div className="max-w-7xl mx-auto mb-20">
-          <div className="mb-4 text-cyan-400 flex justify-center">
+          <div
+            data-aos="fade-down"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="0"
+            className="mb-4 text-cyan-400 flex justify-center"
+          >
             <Globe className="h-10 w-10" />
           </div>
-          <h2 className="text-4xl font-bold text-white mb-4">
+          <h2
+            data-aos="fade-down"
+            data-aos-anchor-placement="top-center"
+            className="text-4xl font-bold text-white mb-4"
+          >
             Trusted by <span className="text-cyan-400">Industry Leaders</span>
           </h2>
-          <p className="text-slate-400 mb-12 max-w-2xl mx-auto">
+          <p
+            data-aos="fade-down"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="200"
+            className="text-slate-400 mb-12 max-w-2xl mx-auto"
+          >
             We are proud to collaborate with global pioneers and innovators who
             trust HOPn to drive their technological transformation.
           </p>
@@ -305,6 +379,9 @@ export default function HomePage() {
           <div className="flex flex-wrap justify-center gap-6 opacity-60">
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <div
+                data-aos="fade-left"
+                data-aos-anchor-placement="top-center"
+                data-aos-delay={i * 200}
                 key={i}
                 className="h-20 w-40 bg-slate-800/50 rounded-lg border border-white/5 flex items-center justify-center"
               >
@@ -317,14 +394,29 @@ export default function HomePage() {
         </div>
 
         <div className="max-w-7xl mx-auto">
-          <div className="mb-4 text-cyan-400 flex justify-center">
+          <div
+            data-aos="fade-down"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="0"
+            className="mb-4 text-cyan-400 flex justify-center"
+          >
             <Award className="h-10 w-10" />
           </div>
-          <h2 className="text-3xl font-bold text-white mb-4">
+          <h2
+            data-aos="fade-down"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="100"
+            className="text-3xl font-bold text-white mb-4"
+          >
             Research &{" "}
             <span className="text-cyan-400">Academic Excellence</span>
           </h2>
-          <p className="text-slate-400 mb-12 max-w-2xl mx-auto">
+          <p
+            data-aos="fade-down"
+            data-aos-anchor-placement="top-center"
+            data-aos-delay="200"
+            className="text-slate-400 mb-12 max-w-2xl mx-auto"
+          >
             Collaborating with prestigious universities to bridge the gap
             between theoretical breakthroughs and practical application.
           </p>
@@ -333,6 +425,9 @@ export default function HomePage() {
           <div className="flex flex-wrap justify-center gap-6 opacity-60">
             {[1, 2, 3, 4].map((i) => (
               <div
+                data-aos="fade-right"
+                data-aos-anchor-placement="top-center"
+                data-aos-delay={i * 200}
                 key={i}
                 className="h-20 w-40 bg-slate-800/50 rounded-lg border border-white/5 flex items-center justify-center"
               >
@@ -347,7 +442,12 @@ export default function HomePage() {
 
       {/* --- FINAL CTA (Part 6) --- */}
       <section className="py-24 px-6">
-        <div className="max-w-3xl mx-auto bg-[#0f172a] border border-white/10 rounded-3xl p-12 text-center shadow-2xl relative overflow-hidden">
+        <div
+          data-aos="zoom-in-up"
+          data-aos-anchor-placement="top-center"
+          data-aos-delay="150"
+          className="max-w-3xl mx-auto bg-[#0f172a] border border-white/10 rounded-3xl p-12 text-center shadow-2xl relative overflow-hidden"
+        >
           <div className="relative z-10">
             <h2 className="text-4xl font-bold text-cyan-400 mb-2">
               Ready to Innovate
