@@ -13,7 +13,8 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0f1416] text-slate-400 pt-16 pb-8 border-t border-white/5 font-sans">
+    // Updated background color to bg-[#020617] to match the global theme
+    <footer className="bg-[#020617] text-slate-400 pt-16 pb-8 border-t border-white/5 font-sans">
       <div className="max-w-7xl mx-auto px-6">
         {/* Main Footer Links Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 pb-12 border-b border-white/5">
@@ -248,7 +249,7 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Trust Badges (Visual placeholders matching the design style) */}
+          {/* Trust Badges */}
           <div className="flex flex-wrap gap-3 opacity-60 hover:opacity-100 transition-opacity cursor-default">
             <div className="h-8 px-2 bg-slate-800 rounded border border-slate-700 flex items-center gap-2">
               <ShieldCheck className="h-3 w-3 text-cyan-500" />
